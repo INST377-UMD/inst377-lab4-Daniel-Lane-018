@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INST 377 - Lab 4</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(169, 219, 248);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        .section {
+            border: 4px solid rgb(255, 255, 255);
+            background-color: purple;
+            padding: 20px;
+            width: 35%;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="pageTitle">INST 377 - Lab 4</h1>
+    
+    <div class="container">
+        <div class="section" id="alertSection">
+            <form onsubmit="return showAlert()">
+                <label for="name">Name:</label>
+                <input type="text" id="nameInput" required>
+                <button type="submit">Alert Me!</button>
+            </form>
+        </div>
+    
+        <div class="section" id="colorSection">
+            <button onclick="toggleColor()">Change Color</button>
+        </div>
+    
+        <div class="section" id="textTesterSection">
+            <form onsubmit="return validateText()">
+                <label for="name">Text Tester:</label>
+                <input type="text" id="textInput" required>
+                <button type="submit">Validate Text</button>
+            </form>
+        </div>
+    
+        <div class="section" id="addTextSection">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+    
+    <script>
+        function showAlert() {
+            let name = document.getElementById("nameInput").value;
+            alert("Hi " + name + "!");
+            return false;
+        }
+
+        function toggleColor() {
+            let body = document.body;
+            body.style.backgroundColor = (body.style.backgroundColor === "rgb(169, 219, 248)") ? "green" : "rgb(169, 219, 248)";
+        }
+
+        function validateText() {
+            let text = document.getElementById("textInput").value;
+            var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert("Special characters are not allowed!");
+                return false;
+            } else {
+                alert("Text is valid!");
+                return false;
+            }
+        }
+
+        function addText() {
+            let title = document.getElementById("pageTitle");
+            title.textContent += " Add Text";
+        }
+    </script>
+</body>
+</html>
